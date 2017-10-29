@@ -8,6 +8,10 @@ public class TwoOptShelf {
         return  myShelf;
     }
     private  boolean isBetterToChange(Position positionA,Position positionB){
-        return true;
+        float beforeProfit=0, afterProfit=0;
+        beforeProfit = myShelf.getProfitFromPoint(positionA)+myShelf.getProfitFromPoint(positionB);
+        afterProfit = myShelf.getProfitFromPoint(positionA,myShelf.getItem(positionB))
+                + myShelf.getProfitFromPoint(positionB,myShelf.getItem(positionA));
+        return beforeProfit<afterProfit;
     }
 }

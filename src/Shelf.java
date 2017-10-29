@@ -24,8 +24,22 @@ public class Shelf {
         return nCol;
     }
     public float getProfitFromPoint(int row,int col){
-
+        int up=0, right=0, down=0, left=0;
+        int item = getItem(row,col);
+        if(item==-1)return 0;
+        float profit=0;
+        if(row-1>-1){ up = getItem(row-1,col);}
+        if(row+1<nRow-1){ down= getItem(row+1, col);}
+        if(col-1>-1 ){ left = getItem(row, col-1);}
+        if(col+1<nCol){ right=getItem(row, col+1);}
+        if(up!=-1) profit+=ItemProfits.getItemProfit(item,up);
+        if(down!=-1) profit+=ItemProfits.getItemProfit(item,down);
+        if(right!=-1) profit+=ItemProfits.getItemProfit(item,right);
+        if(left!=-1) profit+=ItemProfits.getItemProfit(item,left);
         return 0;
+    }
+    public float getProfitFromPoint(Position position){
+        return getProfitFromPoint(position.row,position.col);
     }
     public float getProfitFromPoint(int row,int col,int item){
         int up=0, right=0, down=0, left=0;
