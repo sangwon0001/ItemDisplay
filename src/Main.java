@@ -15,13 +15,13 @@ public class Main {
         float maxProfit=-1;
         Shelf maxShelf = null;
 
-        //*여기부터
+        /*여기부터
         int THREAD_NUM= 4;
         ArrayList<GreedyShelfThread> threads= new ArrayList<>();
         for (int i = 0;i<THREAD_NUM;i++){
             GreedyShelfThread thread = new GreedyShelfThread(frame,
                     (row_col*row_col/THREAD_NUM)*i,
-                    (row_col*row_col/THREAD_NUM)*(i+1),
+                    (row_col*row_col/THREAD_NUM)*(i+1)-1,
                     row_col/2,row_col/2);
             thread.start();
             threads.add(thread);
@@ -40,11 +40,12 @@ public class Main {
         }
         //여기까지가 쓰레드
         //*/
-        /* 이부분이 일반
+        //* 이부분이 일반
         for(int item= 0;item<row_col*row_col;item++) {
-            Shelf shelf = greedyShelf.GreedyFromPoint(row_col/2, row_col/2, item);
-//            Shelf shelf = greedyShelf.GreedyFromPoint(0, 0, item);
+//            Shelf shelf = greedyShelf.GreedyFromPoint(row_col/2, row_col/2, item);
+            Shelf shelf = greedyShelf.GreedyFromPoint(0, 0, item);
             shelf = new TwoOptShelf(shelf).findTwoOptShelf();
+            shelf = new ThreeOptShelf(shelf).findThreeOptShelf();
 //            System.out.println(shelf.toString() + " total profit is " + shelf.getTotalProfit());
             if (shelf.getTotalProfit() > maxProfit) {
                 maxProfit = shelf.getTotalProfit();
@@ -60,6 +61,18 @@ public class Main {
 
         System.out.println(
                 "TwoOpt final is \n"+twoShelf.toString() + " total profit is " + twoShelf.getTotalProfit());
+
+        twoOptShelf = new TwoOptShelf(twoShelf);
+        twoShelf =  twoOptShelf.findTwoOptShelf();
+
+        System.out.println(
+                "TwoOpt final is \n"+twoShelf.toString() + " total profit is " + twoShelf.getTotalProfit());
+
+        ThreeOptShelf threeOptShelf = new ThreeOptShelf(twoShelf);
+        Shelf threeShelf = threeOptShelf.findThreeOptShelf();
+        System.out.println(
+                "ThreeOpt final is \n"+threeShelf.toString() + " total profit is " + threeShelf.getTotalProfit());
+
         System.out.println(
                 "Time is "+(float)(System.currentTimeMillis()-start)/1000 +"sec");
 
