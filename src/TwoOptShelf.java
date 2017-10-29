@@ -21,12 +21,13 @@ public class TwoOptShelf {
     }
     private  boolean isBetterToChange(Position positionA,Position positionB){
         float beforeProfit=0, afterProfit=0;
-        beforeProfit = myShelf.getProfitFromPoint(positionA)+myShelf.getProfitFromPoint(positionB);
-        afterProfit = myShelf.getProfitFromPoint(positionA,myShelf.getItem(positionB))
-                + myShelf.getProfitFromPoint(positionB,myShelf.getItem(positionA));
-        if( beforeProfit<afterProfit){
-            System.out.println("find");
-        }
+        beforeProfit = myShelf.getTotalProfit();
+        myShelf.swap(positionA,positionB);
+        afterProfit = myShelf.getTotalProfit();
+//        if( beforeProfit<afterProfit){
+//            System.out.println("find "+positionA+positionB);
+//        }
+        myShelf.swap(positionA,positionB);
         return (beforeProfit<afterProfit);
     }
 }

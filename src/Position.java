@@ -18,4 +18,9 @@ class Position
 		public Position right(){
 			return new Position(this.row, this.col+1);
 		}
+
+		@Override
+		public String toString() {
+			return " ["+row+","+col+"] ";
+		}
 	}
