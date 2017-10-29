@@ -34,6 +34,9 @@ public class GreedyShelf {
         }
         return tempShelf;
     }
+    public Shelf GreedyFromPointAll(int row,int col, int item){
+        return null;
+    }
     private int findMaxProfitItem(Position position, Shelf shelf){
         float maxProfit=-1;
         int maxItem=-1;
