@@ -36,7 +36,7 @@ public class Shelf {
         if(down!=-1) profit+=ItemProfits.getItemProfit(item,down);
         if(right!=-1) profit+=ItemProfits.getItemProfit(item,right);
         if(left!=-1) profit+=ItemProfits.getItemProfit(item,left);
-        return 0;
+        return profit;
     }
     public float getProfitFromPoint(Position position){
         return getProfitFromPoint(position.row,position.col);

@@ -20,6 +20,13 @@ public class Main {
             }
         }
         System.out.println(
-                "final is \n"+maxShelf.toString() + " total profit is " + maxProfit);
+                "Greedy final is \n"+maxShelf.toString() + " total profit is " + maxProfit);
+
+        TwoOptShelf twoOptShelf = new TwoOptShelf(maxShelf);
+        Shelf twoShelf =  twoOptShelf.findTwoOptShelf();
+
+        System.out.println(
+                "Greedy final is \n"+twoShelf.toString() + " total profit is " + twoShelf.getTotalProfit());
+
     }
 }
