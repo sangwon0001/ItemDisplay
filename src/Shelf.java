@@ -91,6 +91,9 @@ public class Shelf {
     }
     public void swap(Position positionA, Position positionB){
         //TODO 두 포지션의 아이템을 바꾸는 함수를 만들어야됨
-
+        int itemA = getItem(positionA);
+        int itemB = getItem(positionB);
+        setItem(positionA, itemB);
+        setItem(positionB, itemA);
     }
 }
